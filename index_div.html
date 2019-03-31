@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            div{
+                position: absolute;
+            }
+            div.block {
+                border: 2px solid black;
+            }
+
+            div.line {
+                border: 1px solid black;
+            }
+
+            div.vertical_line {
+                width: 0px;
+            }
+            div.horizontal_line {
+                height: 0px;
+            }
+        </style>
+        <script type="text/javascript">
+            function init() {
+                myBody = document.getElementById("root");
+                // myBody.innerHTML = '<div class="block" style="top: 100px; left: 300px; width: 100px; height: 100px;"> Тестовый региональный центр связи</div>';
+                myBody.innerHTML = myBody.innerHTML + createBlock(100, 300, 100, 100, "Teстовый региональный центр связи");
+            };
+
+            function createBlock(x, y, width, height, text) {
+                var block = '<div class="block" style=';
+                var style = '"top: ' + x + 'px; ' + 'left: ' + y + 'px; ' + 'width: ' + width + 'px; ' + 'height: ' + height + 'px;"';
+                block = block + style + '>' + text + '</div>';
+                return block;
+            };
+        </script>
+    </head>
+    <body onload="init()"> 
+        <div id="root">
+            <!-- <div class="block" style="top: 100px; left: 300px; width: 100px; height: 100px;"> Тестовый региональный центр связи</div>
+            <div class="line vertical_line" style="top: 200px; left: 350px; height: 50px"></div>
+            <div class="line horizontal_line" style="top: 150px; left: 400px; width: 50px"></div> -->
+
+        </div>
+    </body>
+    <!-- <script type="text/javascript" src="src/index.js" ></script>   -->
+</html>
