@@ -1,0 +1,49 @@
+div{
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+}
+
+div.outer_block {
+    display: block;
+}
+
+div.block_body {
+    width: 100%;
+    border: 4px double black;
+    background-color: lightgrey;
+    text-align: center;
+}
+
+div.block_footer {
+    height: 30px;
+}
+
+div.footer_element {
+    display: inline-block;
+    border: 1px solid black;
+    border-top: 0px;
+    font-size: 10px;
+    text-align: center;
+}
+
+div.block {                                
+    border: 4px double black;
+    text-align: center;
+}
+
+.block p {
+    font-weight: bold;
+}
+
+div.line {
+    border: 1px solid black;
+}
+
+div.vertical_line {
+    width: 0px;
+}
+
+div.horizontal_line {
+    height: 0px;
+}
