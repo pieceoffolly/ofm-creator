@@ -1,11 +1,9 @@
 
 // import { createRect as createRect } from './core/drawer.mjs';
 
-
-
 const struct = [{
     id : "1",
-    title : "Тестовый региональный центр связи",
+    title : "Тестовый региональный центр связи арываортываотывапьыкапьывапьыап",
     data : {},
     depth : 0,
     children : [  
@@ -16,8 +14,8 @@ const struct = [{
             depth : 1,
             children : [] 
         },
-        {   id : "3",
-            title : "Финансово-экономический отдел",
+        {   id : "3" ,
+            title : "Финансово-экономический отдел впфварфываоыпыапьываьврбьырьбыьбыьы",
             data : {},
             depth : 1,
             children : [] 
@@ -27,7 +25,21 @@ const struct = [{
             title : "Произв. уч. монит. и диаг.сети связи(ЦТО)",
             data : {},
             depth : 1,
-            children : [] 
+            children : [
+                { 
+                    id : "6",
+                    title : "Бригада механизации и автотранспорта",
+                    data : {},
+                    depth : 2,
+                    children : [] 
+                },
+                {   id : "7",
+                    title : "Финансово-экономическая группа",
+                    data : {},
+                    depth : 3,
+                    children : [] 
+                },
+            ] 
         },
         {
             id : "5",
@@ -42,6 +54,8 @@ const struct = [{
 const svgNS = "http://www.w3.org/2000/svg";
 const PARENT_WIDTH = 250;
 const STD_HEIGHT = 30;
+const HEIGHT_STEP = 20;
+const WIDTH_STEP = 20;
 
 window.onload = init(struct);
 
@@ -53,6 +67,7 @@ function init(struct) {
     let x = screen.width / 2 - PARENT_WIDTH / 2;
     let y = 200;
     
+    // корневой блок
     let rect = createRect(x, y, PARENT_WIDTH, STD_HEIGHT)
     svg.appendChild(rect);      
     let foreignObject = createForeignObject(x, y, PARENT_WIDTH, STD_HEIGHT, 'parent-title', struct[0].title);
@@ -65,51 +80,65 @@ function init(struct) {
         foreignObject.setAttribute('height', newHeight);
         rect.setAttribute('height', newHeight);
     }
-    createStruct(svg, struct, x + PARENT_WIDTH / 2, y + newHeight, 0);
+    // добавление потомков
+    createChild(svg, struct, x + PARENT_WIDTH / 2, y + newHeight, PARENT_WIDTH, newHeight, 0);
 };   
 
-function createStruct(svg, struct, parX, parY, index) {
+// Создание структуры
+function createChild(svg, struct, parX, parY, parWidth, parHeight, index) {
     let rectMap = new Map();
     let foMap = new Map();
     let maxHeight = 0;    
 
-    const parOrgeh = struct[index];
+    const parent = struct[index];
     const count = struct[index].children.length;
     const width = PARENT_WIDTH - 20;
     const height = STD_HEIGHT;
-    const globalWidth = width * count + 20 * ( count - 1 );
-    let x = parX - globalWidth / 2 ;
-    let y = parY + 50;
-    
-    parOrgeh.children.forEach(orgeh => {
-        let rect = createRect(x, y, width, 30)
-        rectMap.set(orgeh.id, rect);
+
+    const globalWidth = width * count + WIDTH_STEP * ( count - 1 )
+    const globalHeight = height * count + 20 * ( count - 1 );
+    let x = 0;
+    let y = 0;
+    if(parent.depth > 0) { 
+        x = parX;
+        // y = parY + parHeight + 
+    } else {
+        x = parX - globalWidth / 2;
+        y = parY + 50
+    }
+
+    // создание блоков для потомков
+    parent.children.forEach(child => {
+        let rect = createRect(x, y, width, height)
+        rectMap.set(child.id, rect);
         svg.appendChild(rect);     
 
-        let foreignObject = createForeignObject(x, y, width, 30, 'parent-title', orgeh.title);
-        foMap.set(orgeh.id, foreignObject);
+        let foreignObject = createForeignObject(x, y, width, height, 'parent-title', child.title);
+        foMap.set(child.id, foreignObject);
         svg.appendChild(foreignObject);
 
         let childHeight = foreignObject.children[0].clientHeight;
         if (maxHeight < childHeight) {
             maxHeight = childHeight;
-        }
-
-        x += width + 20;
+        }        
+        (child.depth > 1)
+            ? y += height +50
+            : x += width + WIDTH_STEP;
     });
-
+    // изменение высоты блоков
     if (maxHeight > height) {
-        struct[index].children.forEach(orgeh => {
-            foMap.get(orgeh.id)
+        parent.children.forEach(child => {
+            foMap.get(child.id)
                  .setAttribute('height', maxHeight);
-            // foreignObject.setAttribute('height', maxHeight);
-            rectMap.get(orgeh.id)
+            rectMap.get(child.id)
                    .setAttribute('height', maxHeight);
-            // rect.setAttribute('height', maxHeight);
+
+            //    createChild(svg, struct, )
         });
     }
 }
 
+// Инициализация 
 function createContainer() {
     const container = document.createElement('div');
 
@@ -126,6 +155,7 @@ function createSVG(container, width, height) {
     return svg;
 };
 
+// Утилиты
 function createRect( x, y, width, height) {
     let rect = document.createElementNS(svgNS, 'rect');
     rect.setAttribute('x', x);

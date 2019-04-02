@@ -1,0 +1,91 @@
+        <!-- <style>
+            /* div{
+                position: absolute;
+            }
+            div.block {
+                border: 2px solid black;
+            }
+
+            div.line {
+                border: 1px solid black;
+            }
+
+            div.vertical_line {
+                width: 0px;
+            }
+            div.horizontal_line {
+                height: 0px;
+            } */
+        </style> -->
+        <!-- <script type="text/javascript"> -->
+            // function init() {
+                //     myBody = document.getElementById("root");
+                //     // myBody.innerHTML = '<div class="block" style="top: 100px; left: 300px; width: 100px; height: 100px;"> Тестовый региональный центр связи</div>';
+                //     myBody.innerHTML = myBody.innerHTML + createBlock(100, 300, 100, 100, "Teстовый региональный центр связи");
+                // };
+    
+                // function createBlock(x, y, width, height, text) {
+                //     var block = '<div class="block" style=';
+                //     var style = '"top: ' + x + 'px; ' + 'left: ' + y + 'px; ' + 'width: ' + width + 'px; ' + 'height: ' + height + 'px;"';
+                //     block = block + style + '>' + text + '</div>';
+                //     return block;
+                // };
+             <!-- </script> -->
+
+              <div class="outer_block" style="top: 100px; left: 475px; width: 250px; height: 130px;">
+                <div class="block_body" style="height: 100px;">
+                    <h4>Тестовый региональный центр связи</h4>
+                </div>
+                <div class="block_footer">
+                    <div class="footer_element" style="top: 108px; left: 216px; width: 40px;">Nпп`</div>
+                    <div class="footer_element" style="top: 108px; left: 175px; width: 40px;">Nпп</div>
+                </div>
+            </div>
+            <div class="line vertical_line" style="top: 207px; left: 600px; height: 30px"></div>
+
+            <!-- Левая линия -->
+            <div class="line horizontal_line" style="top: 237px; left: 325px; width: 273px"></div> 
+            <div class="line vertical_line" style="top: 237px; left: 325px; height: 30px"></div>
+
+            <!-- Средняя линия -->
+            <div class="line vertical_line" style="top: 237px; left: 600px; height: 30px"></div>
+
+            <!-- Правая линия -->
+            <div class="line horizontal_line" style="top: 237px; left: 600px; width: 273px"></div> 
+            <div class="line vertical_line" style="top: 237px; left: 873px; height: 30px"></div>
+
+            <!-- Левый блок -->
+            <div class="outer_block" style="top: 268px; left: 200px; width: 250px; height: 130px;">
+                <div class="block_body" style="height: 100px;">
+                    <h4>Первый заместитель руководителя</h4>
+                </div>
+                <div class="block_footer">
+                    <div class="footer_element" style="top: 108px; left: 216px; width: 40px;">Nфп</div>
+                    <div class="footer_element" style="top: 108px; left: 175px; width: 40px;">Nпп`</div>
+                    <div class="footer_element" style="top: 108px; left: 134px; width: 40px;">Nпп</div>
+                </div>
+            </div>
+
+            <!-- Средний блок -->
+            <div class="outer_block" style="top: 268px; left: 475px; width: 250px; height: 130px;">
+                <div class="block_body" style="height: 100px;">
+                    <h4>Главный инженер</h4>
+                </div>
+                <div class="block_footer">
+                    <div class="footer_element" style="top: 108px; left: 216px; width: 40px;">Nфп</div>
+                    <div class="footer_element" style="top: 108px; left: 175px; width: 40px;">Nпп`</div>
+                    <div class="footer_element" style="top: 108px; left: 134px; width: 40px;">Nпп</div>
+                </div>
+            </div>
+
+            <!-- Правый блок -->
+            <div class="outer_block" style="top: 268px; left: 750px; width: 250px; height: 130px;">
+                <div class="block_body" style="height: 100px;">
+                    <h4>Главный инженер</h4>
+                </div>
+                <div class="block_footer">
+                    <div class="footer_element" style="top: 108px; left: 216px; width: 40px;">Nфп</div>
+                    <div class="footer_element" style="top: 108px; left: 175px; width: 40px;">Nпп`</div>
+                    <div class="footer_element" style="top: 108px; left: 134px; width: 40px;">Nпп</div>
+                </div>
+            </div>
